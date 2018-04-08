@@ -51,7 +51,7 @@ $result = $solver->solve($stringA, $stringB);
 ```php
 use Triun\LongestCommonSubstring\Solver;
 
-$solver = new Solver();
+$matchSolver = new MatchesSolver();
 
 $stringA = '0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF';
 $stringB = '56789AB56789ABCDE56789ABCDE56789AB56789A123456789A';
