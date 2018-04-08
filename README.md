@@ -4,8 +4,6 @@ PHP - Longest Common Substring
 PHP implementation of an algorithm to solve the `longest common substring` problem.
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
-[![Pre Release Version on Packagist][ico-pre-release]][link-packagist]
-[![Latest Unstable Version][ico-unstable]][link-packagist]
 [![Build Status][ico-travis]][link-travis]
 [![Coverage status][ico-codecov]][link-codecov]
 [![Total Downloads][ico-downloads]][link-downloads]
