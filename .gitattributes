@@ -1,0 +1,9 @@
+.gitattributes export-ignore
+.gitignore export-ignore
+.travis.* export-ignore
+.archer.* export-ignore
+test export-ignore
+*.md export-ignore
+LICENCE export-ignore
+phpcs.xml export-ignore
+phpunit.xml export-ignore
