@@ -37,7 +37,7 @@ class Solver implements SolverInterface
         string $stringB,
         array $matrix
     ) {
-        return count($longestIndexes) === 0 ? '' : substr($stringA, $longestIndexes[0], $longestLength);
+        return count($longestIndexes) === 0 ? '' : mb_substr($stringA, $longestIndexes[0], $longestLength);
     }
 
     /**
@@ -55,8 +55,14 @@ class Solver implements SolverInterface
             return call_user_func_array([$this, 'solve'], $arguments);
         }
 
-        $charsA = str_split($stringA);
-        $charsB = str_split($stringB);
+        $charsA = [];
+        $charsB = [];
+        for ($i=0; $i < max(mb_strlen($stringA), 1); $i++) {
+                $charsA[] = mb_substr($stringA, $i, 1);
+        }
+        for ($i=0; $i < max(mb_strlen($stringB), 1); $i++) {
+                $charsB[] = mb_substr($stringB, $i, 1);
+        }
 
         $matrix = array_fill_keys(array_keys($charsA), array_fill_keys(array_keys($charsB), 0));
         $longestLength = 0;
