@@ -55,6 +55,29 @@ trait MatchesArrayProvidersTrait
                     ],
                 ],
             ],
+            'UTF-8'              => [
+                'L’été était chaud.',
+                'L’hiver était froid.',
+                [
+                    [
+                        'value'   => ' était ',
+                        'length'  => 7,
+                        'indexes' => [5, 7],
+                    ],
+                ],
+            ],
+            // In UTF-8: é = 0xC3A9 and © = 0xC2A9 (the last byte is the same but the Unicode characters are different)
+            'UTF-8 (nasty)'      => [
+                'L’été était chaud.',
+                'L’hiver ©tait froid.',
+                [
+                    [
+                        'value'   => 'tait ',
+                        'length'  => 5,
+                        'indexes' => [7, 9],
+                    ],
+                ],
+            ],
         ];
     }
 }

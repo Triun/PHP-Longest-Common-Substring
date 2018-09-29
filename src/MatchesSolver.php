@@ -46,7 +46,7 @@ class MatchesSolver extends Solver
         array $matrix
     ) {
         return array_map(function (Match $result) use ($stringA) {
-            $result->value = substr($stringA, $result->index(), $result->length);
+            $result->value = mb_substr($stringA, $result->index(), $result->length);
 
             return $result;
         }, $longestIndexes);
