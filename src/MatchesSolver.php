@@ -22,10 +22,10 @@ class MatchesSolver extends Solver
     {
         return new Match(
             [
-                $i - $matrix[$i][$j] + 1,
-                $j - $matrix[$i][$j] + 1,
+                $i - $matrix[$i%2][$j] + 1,
+                $j - $matrix[$i%2][$j] + 1,
             ],
-            $matrix[$i][$j]
+            $matrix[$i%2][$j]
         );
     }
 
