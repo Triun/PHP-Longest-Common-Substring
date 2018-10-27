@@ -18,7 +18,7 @@ class Solver implements SolverInterface
      */
     protected function newIndex(array $matrix, int $i, int $j)
     {
-        return $i - $matrix[$i][$j] + 1;
+        return $i - $matrix[$i%2][$j] + 1;
     }
 
     /**
@@ -58,7 +58,7 @@ class Solver implements SolverInterface
         $charsA = str_split($stringA);
         $charsB = str_split($stringB);
 
-        $matrix = array_fill_keys(array_keys($charsA), array_fill_keys(array_keys($charsB), 0));
+        $matrix = array_fill_keys([0, 1], array_fill_keys(array_keys($charsB), 0));
         $longestLength = 0;
         $longestIndexes = [];
 
@@ -66,20 +66,20 @@ class Solver implements SolverInterface
             foreach ($charsB as $j => $charB) {
                 if ($charA === $charB) {
                     if (0 === $i || 0 === $j) {
-                        $matrix[$i][$j] = 1;
+                        $matrix[$i%2][$j] = 1;
                     } else {
-                        $matrix[$i][$j] = $matrix[$i - 1][$j - 1] + 1;
+                        $matrix[$i%2][$j] = $matrix[($i-1)%2][$j - 1] + 1;
                     }
 
                     $newIndex = $this->newIndex($matrix, $i, $j);
-                    if ($matrix[$i][$j] > $longestLength) {
-                        $longestLength = $matrix[$i][$j];
+                    if ($matrix[$i%2][$j] > $longestLength) {
+                        $longestLength = $matrix[$i%2][$j];
                         $longestIndexes = [$newIndex];
-                    } elseif ($matrix[$i][$j] === $longestLength) {
+                    } elseif ($matrix[$i%2][$j] === $longestLength) {
                         $longestIndexes[] = $newIndex;
                     }
                 } else {
-                    $matrix[$i][$j] = 0;
+                    $matrix[$i%2][$j] = 0;
                 }
             }
         }
